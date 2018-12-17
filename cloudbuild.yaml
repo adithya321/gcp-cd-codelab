@@ -1,0 +1,16 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/adithya321/gcp-cd-codelab"]
+    env: ["PROJECT_ROOT=github.com/adithya321/gcp-cd-codelab"]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/espblufi-android/gcp-cd-codelab:",
+        "-f",
+        "Dockerfile",
+        ".",
+      ]
+images:
+  - "gcr.io/espblufi-android/gcp-cd-codelab:"
